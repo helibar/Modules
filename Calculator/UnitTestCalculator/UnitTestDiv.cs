@@ -34,7 +34,7 @@ namespace UnitTestCalculator
 
             double DivResult = calculator.Div(1.75764546, 0);
             bool overflowed = double.IsInfinity(DivResult);
-            Assert.AreEqual(true, true);
+            Assert.AreEqual(overflowed, true);
         }
 
         [TestMethod]
@@ -55,7 +55,7 @@ namespace UnitTestCalculator
             double DivResult = calculator.Div(0.0, 0.000);
             bool overflowed = double.IsNaN(DivResult);
 
-            Assert.AreEqual(true, true);
+            Assert.AreEqual(overflowed, true);
         }
 
 
