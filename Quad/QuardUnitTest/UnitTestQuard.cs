@@ -33,7 +33,7 @@ namespace QuardUnitTest
             var calculator = new Calc();
             string result = calculator.calcQuard(1, 0, 0);
 
-            Assert.AreEqual("One solution: x=0", result);
+            Assert.AreEqual("x=0", result);
         }
 
         [TestMethod]
@@ -43,7 +43,7 @@ namespace QuardUnitTest
 
             string result = calculator.calcQuard(2, 4, 2);
 
-            Assert.AreEqual("One solution: x=-1", result);
+            Assert.AreEqual("x=-1", result);
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace QuardUnitTest
 
             string result = calculator.calcQuard(6, 11, -35);
 
-            Assert.AreEqual("Two solutions: x1=1.66666666666667 x2 = -3.5", result);
+            Assert.AreEqual("x1=1.66666666666667 x2=-3.5", result);
         }
 
 

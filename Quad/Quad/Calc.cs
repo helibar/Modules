@@ -23,7 +23,7 @@ namespace Quad
             {
                 x1 = (-b + System.Math.Sqrt(sqrtpart)) / (2 * a);
                 x2 = (-b - System.Math.Sqrt(sqrtpart)) / (2 * a);
-                return "Two solutions: x1="+x1+" x2 = "+x2;
+                return "x1="+x1+" x2="+x2;
             }
             else if (sqrtpart < 0)
             {
@@ -32,7 +32,7 @@ namespace Quad
             else //sqrtpart=0
             {
                 x1 = (-b) / (2 * a);
-                return "One solution: x=" + x1;
+                return "x=" + x1;
             }
         }
     }
