@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShapeLib
 {
-    public class Rectangle : Shape
+    public class Rectangle : Shape, IPersist, IComparable<Rectangle>
     {
         double _width;
         double _height;
@@ -19,7 +19,7 @@ namespace ShapeLib
 
         public override double Area
         {
-            
+
             get
             {
                 return _width * _height;
@@ -29,10 +29,24 @@ namespace ShapeLib
         public override void Display()
         {
             base.Display();
-            Console.WriteLine("It's a Rectabgle! Wigth:"+_width+" Height:"+_height);
+            Console.WriteLine("It's a Rectabgle! Wigth:" + _width + " Height:" + _height);
 
         }
 
+        public void Write(StringBuilder sb)
+        {
+            sb.Append("Width: ").Append(_width).AppendLine();
+            sb.Append("Height:").Append(_height).AppendLine();
+            sb.AppendLine();
+        }
 
+        public int CompareTo(Rectangle rec)
+        {
+            if (this._width == rec._width && this._height == rec._height)
+            {
+                return 0;
+            }
+            return 1;
+        }
     }
 }

@@ -12,25 +12,25 @@ namespace ShapesApp
         static void Main(string[] args)
         {
             var manager = new ShapeManager();
-
+            StringBuilder sb = new StringBuilder();
 
             //Create 5 rectabgles
             double w = 1.5;
             double h = 2.5;
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < 3; i++)
             {
                 var rectangle = new ShapeLib.Rectangle(w, h);
                 Shape s = rectangle;
                 manager.Add(s);
-                w+=i;
-                h+=i;
+                w += i;
+                h += i;
             }
 
             //Create 5 circles
             double radius = 1.5;
 
-            for (int i = 1; i < 6; i++)
+            for (int i = 1; i < 2; i++)
             {
                 var circle = new ShapeLib.Circle(radius);
                 Shape s = circle;
@@ -42,7 +42,7 @@ namespace ShapesApp
             double radius1 = 1.9;
             double radius2 = 7.1;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 var ellipse = new ShapeLib.Ellipse(radius1, radius2);
                 Shape s = ellipse;
@@ -52,6 +52,9 @@ namespace ShapesApp
             }
 
             manager.DisplayAll();
+
+            manager.Save(sb);
+            Console.WriteLine(sb.ToString());
         }
     }
 }

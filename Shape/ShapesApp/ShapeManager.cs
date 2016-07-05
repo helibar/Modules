@@ -11,7 +11,7 @@ namespace ShapesApp
     class ShapeManager
     {
         ArrayList shapes = new ArrayList();
-        
+
         public void Add(Shape s)
         {
             shapes.Add(s);
@@ -22,8 +22,9 @@ namespace ShapesApp
             foreach (Shape shape in shapes)
             {
                 shape.Display();
-                Console.WriteLine("Area is: "+shape.Area);
-              
+                Console.WriteLine("Area is: " + shape.Area);
+                Console.WriteLine("-----------------------------------------------");
+
             }
         }
 
@@ -38,6 +39,16 @@ namespace ShapesApp
         public int count()
         {
             return shapes.Count;
+        }
+
+        public StringBuilder Save(StringBuilder sb)
+        {
+            foreach (Shape s in shapes)
+            {
+                IPersist p = (IPersist)s;
+                p.Write(sb);
+            }
+            return sb;
         }
     }
 }
