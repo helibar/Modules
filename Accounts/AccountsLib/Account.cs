@@ -23,16 +23,25 @@ namespace AccountsLib
 
         public bool Deposit(double amount)
         {
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             _balance += amount;
             return true;
         }
 
         public bool Withdraw(double amount)
         {
-            if ((_balance-amount) < 0)
+            if (amount < 0)
             {
-                Console.WriteLine("Withdraw is not allowed,your account cannot be in overdraft");
-                return false;
+                throw new ArgumentOutOfRangeException();
+            }
+
+            else if ((_balance - amount) < 0)
+            {
+                throw new InsufficientFundsException("Action canceled. Overdraft is not allowed.");
             }
 
             _balance -= amount;
@@ -44,18 +53,22 @@ namespace AccountsLib
             return _balance;
         }
 
-        public bool Transfer(Account account, double amount)
+        public void Transfer(Account account, double amount)
         {
-            if (Withdraw(amount)) //withdrawing mony succeeded?
+            try
             {
-                account.Deposit(amount);
-                return true;
+                if (Withdraw(amount))
+                {
+                    account.Deposit(amount);
+                    Console.WriteLine("Money Transfer successfully done!");
+                    Console.WriteLine("Balance before transfer was: " + (_balance + amount));
+                }
             }
-            else
+            finally
             {
-                return false;
+                Console.WriteLine("Current balance is: " + _balance);
             }
-           
+
         }
 
     }
