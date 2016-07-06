@@ -17,6 +17,9 @@ namespace ShapeLib
             _height = height;
         }
 
+        public double Width { get; set; }
+        public double Height { get; set; }
+
         public override double Area
         {
 
@@ -40,13 +43,15 @@ namespace ShapeLib
             sb.AppendLine();
         }
 
-        public int CompareTo(Rectangle rec)
+        public int CompareTo(Rectangle other)
         {
-            if (this._width == rec._width && this._height == rec._height)
+            // Alphabetic sort if Width is equal.
+            if (this.Width == other.Width)
             {
-                return 0;
+                return this.Height.CompareTo(other.Height);
             }
-            return 1;
+            // Default to width sort. [High to low]
+            return other.Width.CompareTo(this.Width);
         }
     }
 }

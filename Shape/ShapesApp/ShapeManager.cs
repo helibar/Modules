@@ -11,7 +11,7 @@ namespace ShapesApp
     class ShapeManager
     {
         ArrayList shapes = new ArrayList();
-
+        
         public void Add(Shape s)
         {
             shapes.Add(s);
@@ -50,5 +50,18 @@ namespace ShapesApp
             }
             return sb;
         }
+        public void Sort()
+        {
+            foreach (Rectangle s in shapes)
+            {
+                shapes.Sort();
+            }
+            foreach (Ellipse s in shapes)
+            {
+                shapes.Sort();
+            }
+        }
+
+        
     }
 }

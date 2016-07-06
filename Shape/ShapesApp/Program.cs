@@ -55,6 +55,11 @@ namespace ShapesApp
 
             manager.Save(sb);
             Console.WriteLine(sb.ToString());
+
+            //Console.WriteLine();
+            //manager.Sort();
+            ////manager.DisplayAll();
+
         }
     }
 }
