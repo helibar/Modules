@@ -66,7 +66,7 @@ namespace AccountsLib
             }
             finally
             {
-                Console.WriteLine("Current balance is: " + _balance);
+                Console.WriteLine("Transfer attempt has been made for account:{0}. amount is: {1} \nCurrent balance is: {2}" ,_accId,amount ,_balance);
             }
 
         }
