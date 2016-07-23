@@ -4,6 +4,7 @@ using BinaryDisplay;
 
 namespace BinaryDisplayTest
 {
+    //You can add more tests.
     [TestClass]
     public class UnitTestCount
     {

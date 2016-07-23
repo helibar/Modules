@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryDisplay
 {
+    //Good decision to extract this to a new class.
     public class Binary
     {
         //Get int num and return it in bibary
