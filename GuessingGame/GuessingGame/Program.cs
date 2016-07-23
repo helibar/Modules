@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GuessingGame
 {
+    //Nice work.
     class Program
     {
         static void Main(string[] args)
@@ -38,11 +39,12 @@ namespace GuessingGame
                         }
 
                         Console.WriteLine("Number of guesses:" + count);
+
+                        //a simple return would have done the job.
                         Environment.Exit(1);
                         //break; //end when number is guessed
                     }
                 }
-
                 catch (FormatException e)
                 {
                     Console.WriteLine(e.Message);
