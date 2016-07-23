@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
+    //Nice input validations.
+    //Nice UnitTests.
     class Program
     {
         static void Main(string[] args)
