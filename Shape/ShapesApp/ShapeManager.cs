@@ -12,6 +12,7 @@ namespace ShapesApp
     {
         ArrayList shapes = new ArrayList();
         
+        //No input validation
         public void Add(Shape s)
         {
             shapes.Add(s);
@@ -28,6 +29,7 @@ namespace ShapesApp
             }
         }
 
+        //Very good!
         public Shape this[int index]
         {
             get
@@ -41,6 +43,19 @@ namespace ShapesApp
             return shapes.Count;
         }
 
+        /**
+         * Bug - it is not neccesary that every shape will implement IPersist.
+           Consider:
+           
+            foreach (var persistable in Shapes.OfType<IPersist>())
+            {
+               persistable.Write(st);
+            }
+
+        OfType will select only members which are assignable to an IPersist reference and return such a collection
+        https://msdn.microsoft.com/en-us/library/bb360913(v=vs.110).aspx
+
+         */
         public StringBuilder Save(StringBuilder sb)
         {
             foreach (Shape s in shapes)

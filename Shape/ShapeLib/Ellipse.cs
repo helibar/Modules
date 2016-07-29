@@ -10,7 +10,7 @@ namespace ShapeLib
     {
         double _radius1;
         double _radius2;
-        double pie = 3.14;
+        double pie = 3.14;//Consider 'Math.PI' https://msdn.microsoft.com/en-us/library/system.math.pi(v=vs.110).aspx (more accurate)
 
         public override double Area
         {
@@ -39,6 +39,10 @@ namespace ShapeLib
             sb.AppendLine();
         }
 
+        /**
+         An incorrect implementation.. according to it, an ellipse is either equal to another, or greater than it - but never lesser
+            Also, consider using Area as a sorting parameter
+         */
         public int CompareTo(Ellipse el)
         {
             if (this._radius1 == el._radius1 && this._radius2==el._radius2)
