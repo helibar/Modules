@@ -20,6 +20,11 @@ namespace GenericApp
             }
         }
 
+        /**Consider '_dictionary.Keys' - as simple as that
+         * I understand what you did, and it is great that you did it, however Dictionary already does that by himself
+         * Have a look for yourself:
+         * http://referencesource.microsoft.com/#mscorlib/system/collections/generic/dictionary.cs,9a3c0cb5c149c9f7,references
+         */
         public ICollection<K> Keys
         {
             get
@@ -28,8 +33,16 @@ namespace GenericApp
                     return _dictionary.Keys;
 
                 List<K> keys = _dictionary.Keys.ToList();
+
+
+                /**Bug
+                 * 
+                 * You are either adding a null reference (if K is a reference type
+                 * Or a value type which originally was not in the key collection
+                */
                 keys.Add(default(K));
-                return new ReadOnlyCollection<K>(keys);
+                
+                return new ReadOnlyCollection<K>(keys);//Very good!
             }
         }
 
@@ -69,16 +82,19 @@ namespace GenericApp
             _dictionary.Clear();
         }
 
+        //Member Not implemented
         public bool Contains(K key, V value)
         {
             throw new NotImplementedException();
         }
 
+        //Member Not implemented
         public bool ContainsKey(K key)
         {
             throw new NotImplementedException();
         }
 
+        //Member Not implemented
         public IEnumerator<KeyValuePair<K, IEnumerable<V>>> GetEnumerator()
         {
             throw new NotImplementedException();
@@ -91,7 +107,7 @@ namespace GenericApp
 
         public bool Remove(K key, V value)
         {
-            var res = _dictionary[key];
+            var res = _dictionary[key];//No check if key exists in dictionary
             return res.Remove(value);
         }
 
