@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 
 namespace Strings
 {
+    //Nice idea to create a class.
+    //Though I would expect the class to accept the string array in a constructor, then to have properties that returns them sorted, reversed, etc...
     public class StringsActions
     {
+        //Consider a better name
         //return number of words
         public int WordsNum(string[] words)
         {
             return words.Length;
         }
 
+        //Consider the use of Array.Reverse(words).
+        //Consider the use of string.Builder
         //revers the words
         public string Revers(string[] words)
         {
@@ -25,6 +30,7 @@ namespace Strings
             return s;
         }
 
+        //Consier the use of String.Builder
         //sort words
         public string Sort(string[] words)
         {

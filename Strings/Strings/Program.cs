@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Strings
 {
+    //Awesome unitTests.
     public class Program
     {
         static void Main(string[] args)
@@ -22,6 +23,7 @@ namespace Strings
 
                 if (!strEmpty)
                 {
+                    //Nice.
                     string[] words = str.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
                     Console.WriteLine("Number of words is: " + s.WordsNum(words));
