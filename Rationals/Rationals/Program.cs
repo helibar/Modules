@@ -10,35 +10,29 @@ namespace Rationals
     {
         static void Main(string[] args)
         {
-            
-            var R1 = new Rational(4, 6);
-            var R2 = new Rational(12, 6);
-            var R3 = new Rational(4);
-            var R4 = new Rational(6, 33);
-            var R5 = new Rational(10, 9);
-            var R6 = new Rational();
-            var R7 = new Rational();
 
-            var R = new Rational();
+            Rational num1 = new Rational(1, 2);
+            Rational num2 = new Rational(1, 2);
 
-            //Value as double
-            Console.WriteLine(R1.valueAsDouble());
+            Rational num3 = num1.Add(num1, num2);
 
-            //Add
-            R6=R.Add(R1, R2);
-            Console.WriteLine(R6.valueAsDouble());
+            Rational num4 = num2.Mul(num2, num2);
 
-            //Mul
-            R7 = R.Mul(R3,R4);
-            Console.WriteLine(R7.valueAsDouble());
+            Rational num6 = new Rational(2, 4);
+            Rational num7 = new Rational(2, 4);
+            num7.Reduce(num7);
 
-            //Reduce
-            R4.Reduce(R4);
+
+            Console.WriteLine($"{num1} + {num2} = {num3}");
+            Console.WriteLine($"{num2} * {num2} = {num4}");
+            Console.WriteLine($"{num6} reduced {num7}");
 
         }
     }
 
-
+    //Consider extracting this to a different file.
+    //No Euals
+    //No ToString
     struct Rational
     {
         int _numerator;
@@ -50,27 +44,37 @@ namespace Rationals
             _denomerator = d;
         }
 
+        //Consider using hte other construct
+        //Rational(int n) : this(n, 1) { }
         public Rational(int n)
         {
             _numerator = n;
             _denomerator = 1;
         }
 
+        //This should be a Property: int Numerator { get { return _numerator; }}
+        //Should start with a capital letter
         public int numerator()
         {
             return _numerator;
         }
 
+        //This should be a Property: int Denomerator { get { return _denomerator; }}
+        //Should start with a capital letter
         public int denomerator()
         {
             return _denomerator;
         }
 
+        //This should be a Property: int Numerator { get { return _numerator; }}
+        //Should start with a capital letter
+        //The name 'Value' might have been better
         public double valueAsDouble()
         {
             return (double)_numerator / (double)_denomerator;
         }
 
+        //Why is this getting two arguments?
         public Rational Add(Rational ab, Rational cd)
         {
             var a = ab.numerator();
@@ -84,6 +88,7 @@ namespace Rationals
             return r;
         }
 
+        //Why is this getting two arguments?
         public Rational Mul(Rational ab, Rational cd)
         {
             var a = ab.numerator();
@@ -97,6 +102,7 @@ namespace Rationals
             return r;
         }
 
+        //Why is this getting an argument?
         public void Reduce(Rational ab)
         {
             var a = ab.numerator();
@@ -111,6 +117,8 @@ namespace Rationals
                     b = b / i;
                 }
             }
+
+            //ab or any other Rational instance is not being changed. 
             Console.WriteLine("a:{0},b:{1}", a, b);
         }
 
