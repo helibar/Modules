@@ -16,6 +16,8 @@ namespace AccountsLib
             _accId = accId;
         }
 
+        //This should have been a property:
+        //public int ID { get{ retur _accId;}}
         public int id()
         {
             return _accId;
@@ -48,11 +50,14 @@ namespace AccountsLib
             return true;
         }
 
+        //This should have been a property
         public double balance()
         {
             return _balance;
         }
 
+        //It isn't a good idea to pring message in such methods. AccountsLib is a class library, it can be used in appliations that don't have Consoles.
+        //How then should we know what happened? 
         public void Transfer(Account account, double amount)
         {
             try

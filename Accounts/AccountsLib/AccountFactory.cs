@@ -8,6 +8,7 @@ namespace AccountsLib
 {
     public static class AccountFactory
     {
+        //The CreateAccount should create the id.
         public static Account CreateAccount(int id,double balance)
         {
             var account = new Account(id);
