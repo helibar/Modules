@@ -252,3 +252,5 @@ paket-files/
 *.sln.iml
 /Shape.bak
 /GenericApp/UnitTestGenericApp
+/GenericApp2.2
+/GenericAppLab2.2/UnitTestGenericApp

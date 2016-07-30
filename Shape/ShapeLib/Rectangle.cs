@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace ShapeLib
 {
+    //+1 for using the IComparable<T> - there is also IComparable (without type parameters)
     public class Rectangle : Shape, IPersist, IComparable<Rectangle>
     {
         double _width;
         double _height;
+
+        //You are missing a constructor with a ConsoleColor enumeration parameter
 
         public Rectangle(double width, double height)
         {
@@ -43,6 +46,7 @@ namespace ShapeLib
             sb.AppendLine();
         }
 
+        //Did you mean Area?
         public int CompareTo(Rectangle other)
         {
             // Alphabetic sort if Width is equal.

@@ -9,31 +9,11 @@ namespace AttribDemo
 {
     class Program
     {
-        static void Main(string[] args)
+
+        static bool isAllRevApproved = true;
+
+        public static void AnalayzeAssembly(Assembly assObj)
         {
-            Assembly currentAssem = Assembly.GetExecutingAssembly();
-
-            if ((AnalayzeAssembly(currentAssem)))
-            {
-                Console.WriteLine("All reviewed types are approved!");
-            } 
-            else
-            {
-                Console.WriteLine("Not all reviewed types are approved!");
-            }
-
-
-            //10.	What happens if you pass a reference to some other Assembly to the AnalyzeAssembly method? Try it
-            //Nothing will happen since it cannot find CodeReviewAttribute.
-            Type t = typeof(int);
-            Assembly intAssem = Assembly.GetAssembly(t);
-            AnalayzeAssembly(intAssem);
-
-        }
-
-        public static bool AnalayzeAssembly(Assembly assObj)
-        {
-            bool isAllRevApproved = true;
 
             foreach (var type in assObj.GetTypes())
             {
@@ -45,14 +25,34 @@ namespace AttribDemo
                     if (attr is CodeReviewAttribute)
                     {
                         CodeReviewAttribute a = (CodeReviewAttribute)attr;
-                        System.Console.WriteLine("Reviewer name: {0}, Review date: {1}, Is code approved? {2}", a.RevName, a.RevDate,a.IsApproved);
+                        System.Console.WriteLine("Reviewer name: {0}, Review date: {1}, Is code approved? {2}", a.RevName, a.RevDate, a.IsApproved);
                         isAllRevApproved = isAllRevApproved && a.IsApproved;
                     }
                 }
             }
-
-            return isAllRevApproved;
         }
 
+        static void Main(string[] args)
+        {
+            Assembly currentAssem = Assembly.GetExecutingAssembly();
+
+            AnalayzeAssembly(currentAssem);
+            if (isAllRevApproved)
+            {
+                Console.WriteLine("All reviewed types are approved!");
+            } 
+            else
+            {
+                Console.WriteLine("Not all reviewed types are approved!");
+            }
+
+
+            //10.	What happens if you pass a reference to some other Assembly to the AnalyzeAssembly method? Try it
+            //Nothing will happen since it cannot find CodeReview Attribute.
+            Type t = typeof(int);
+            Assembly intAssem = Assembly.GetAssembly(t);
+            AnalayzeAssembly(intAssem);
+
+        }
     }
 }
