@@ -52,6 +52,8 @@ namespace Primes
                 int num2 = Convert.ToInt32(Console.ReadLine());
 
                 int[] primeIntArray = CalcPrimes(num1, num2);
+
+                //The call to ToString is redundant. Console.WriteLine will do that for you.
                 for (int i = 0; i < primeIntArray.Length; i++)
                 {
                     Console.WriteLine(primeIntArray[i].ToString());
