@@ -13,6 +13,8 @@ namespace CustomersApp
         //My Delegate
         internal delegate bool CustomerFilter(Customer cus);
 
+        //Ok, though you should have used IEnumerable with yield.
+        //Consider better names for your arguments.
         static ICollection<Customer> GetCustomer(ICollection<Customer> cusc, CustomerFilter cfx)
         {
             List<Customer> filteredList = new List<Customer>();
@@ -26,15 +28,20 @@ namespace CustomersApp
             return filteredList;
         }
 
+        //What about small letters?
         static bool CusLetterAK(Customer cus)
         {
             return (cus.Name[0] >= 'A' && cus.Name[0] <= 'K');
         }
+
+        //What about small letters?
+        //you could have implemented this directly in the anonymous method
         static bool CusLetterLZ(Customer cus)
         {
             return (cus.Name[0] >= 'L' && cus.Name[0] <= 'Z');
         }
 
+        //You could have implemented this directly in the lambda
         static bool IdLessThen100(Customer cus)
         {
             return (cus.ID < 100);
@@ -61,6 +68,8 @@ namespace CustomersApp
             // Uses IComparable.CompareTo()
             list.Sort();
             Console.WriteLine("\nSorted Array:");
+
+            //Consider extracting this to another method
             foreach (var cus in list)
             {
                 Console.WriteLine("Name: {0}, ID: {1}, Address: {2}", cus.Name, cus.ID, cus.Address);
