@@ -13,6 +13,15 @@ namespace MailSystem
         //raise the event
         protected virtual void OnMailArrived(MailArrivedEventArgs args)
         {
+            //You are missing a step.
+            //var handler = MailArrived;
+            //if (null != handler)
+            //{
+            //    handler(this, args);
+            //}
+            //Or use C# 6 feature: MailArrived?.Invoke(this, args);
+
+            //The step that you missing ins important for threading. what will happen if a delegate will unsubscribe after the check for null? 
             if (MailArrived != null)
             {
                 MailArrived(this, args);

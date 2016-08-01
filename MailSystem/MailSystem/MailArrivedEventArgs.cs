@@ -2,6 +2,7 @@
 {
     public class MailArrivedEventArgs
     {
+        //There are fields and not properties.
         public readonly string Title;
         public readonly string Body;
 
@@ -9,8 +10,10 @@
         {
             this.Title = title;
             this.Body = body;
-            System.Console.WriteLine(title);
-            System.Console.WriteLine(body);
+
+            //These shouldn't be here.
+            //System.Console.WriteLine(title);
+            //System.Console.WriteLine(body);
         }
     }
 }
