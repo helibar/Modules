@@ -38,6 +38,7 @@ namespace AccountsLib
         {
             if (amount < 0)
             {
+                //You should have added a message to the exception
                 throw new ArgumentOutOfRangeException();
             }
 
@@ -71,6 +72,7 @@ namespace AccountsLib
             }
             finally
             {
+                //where is the message for the balance before the transaction?
                 Console.WriteLine("Transfer attempt has been made for account:{0}. amount is: {1} \nCurrent balance is: {2}" ,_accId,amount ,_balance);
             }
 
